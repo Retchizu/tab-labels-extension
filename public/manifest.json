@@ -1,0 +1,46 @@
+{
+    "name": "tab-labels",
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "icons": {
+        "16": "assets/tab-label-icon-16.png",
+        "32": "assets/tab-label-icon-32.png",
+        "48": "assets/tab-label-icon-48.png",
+        "128": "assets/tab-label-icon-128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "inject.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "scripting",
+        "tabs",
+        "tabGroups",
+        "commands"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "commands": {
+        "toggle_collapse": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E",
+                "mac": "Command+Shift+E"
+            },
+            "description": "Collapse the group of the active tab"
+        }
+    }
+}
